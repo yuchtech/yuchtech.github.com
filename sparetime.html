@@ -1,8 +1,248 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<html>
-<body>
-<h1>Sparetime Play</h1>
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>玩转与众不同的俄罗斯方块</title>
+<meta name="keywords" content="俄罗斯方块，方块">
+<meta name="description" content="">
+<meta name="format-detection" content="telephone=no">
+<style>
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: 300;
+            background-color: #fafafa;
+        }
+
+        @media (max-width: 350px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        body {
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin: 0;
+            min-height: 100%;
+            padding-bottom: 0.5rem;
+            background-size: 17.75rem 24.7rem, 1rem 1rem;
+        }
+
+        .icon {
+            display: block;
+            margin: 2.1rem auto 0;
+            width: 5.75rem;
+            height: 5.75rem;
+            border-radius: 0.9rem 0.9rem;
+            box-shadow: 0 2px 5px rgba(98, 98, 98, 0.4);
+        }
+
+        .name {
+            display: block;
+            margin: 1rem auto 0;
+            width: 15.25rem;
+            height: 3.55rem;
+        }
+
+        .nickname-introduction {
+          margin-top: 1.1rem;
+          padding: 0 0.5rem;
+          text-align: center;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          font-size: 1rem;
+          color: #ff5758;
+        }
+
+        .nickname {
+          line-height: 1.9;
+          font-size: 1.3rem;
+        }
+
+        .copy {
+            margin-top: 1.9rem;
+            font-size: 1rem;
+            font-weight: 400;
+            text-align: center;
+            color: #566069;
+        }
+
+        .dl-btn-container {
+            margin: 1rem auto;
+            text-align: center;
+            font-size: 0;
+        }
+
+        .dl-btn {
+            display: block;
+            width: 9rem;
+            height: 2.3rem;
+			margin: 0 auto;
+        }
+
+		.dl-btn+.dl-btn {
+			margin-top: 1rem;
+		}
+
+        .dl-btn img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            padding: 0.3rem 0 0.2rem;
+            text-align: center;
+            /*background: #fafafa;*/
+            color: #999;
+			font-size: 0.6rem;
+        }
+
+		.footer a {
+			color: inherit;
+			color: #353535;
+			text-decoration: none;
+			border-bottom: 1px solid;
+		}
+
+    </style>
+</head>
+<body>
+<div class="container">
+<img src="./sparetime_icon.png" alt="图标" title="贪吃蛇大作战" class="icon"/>
+<p class="nickname-introduction">俄罗斯方块与三消的碰撞！</p>
+<p class="copy">好玩，有趣！</p>
+<div class="dl-btn-container">
+<a href="javascript:" class="dl-btn dl-ios-btn" id="dl-ios-btn">
+<img src="./dl_ios_btn@2x.png" alt="iOS 下载">
+</a>
+<a href="javascript:" class="dl-btn dl-android-btn" id="dl-android-btn">
+<img src="./dl_android_btn@2x.png" alt="Android 下载">
+</a>
+</div>
+<div class="footer copyright">
+Copyright©<a href="http://tcsdzz.com/about.html">金华市尤趣科技有限公司</a> All Rights Reserved
+</div>
+</div>
+<script>
+function gp() {
+	if ('hidden' in document) {
+		return null;
+	}
+	var browserPrefixes = ['moz', 'ms', 'o', 'webkit'];
+
+	for (var i = 0; i < browserPrefixes.length; i++) {
+		var prefix = browserPrefixes[i] + 'Hidden';
+		if (prefix in document) {
+	  		return browserPrefixes[i];
+		}
+	}
+	return null;
+}
+
+function hp(p) {
+	if (p) {
+		return p + 'Hidden';
+	} else {
+		return 'hidden';
+	}
+}
+</script>
+<script>
+	function fillNickname(nicknameVal) {
+		if (nicknameVal) {
+			var nicknameEl = document.getElementById("nickname");
+			nicknameEl.innerText = nicknameVal;
+		} else {
+			var nicknameIntroductionEl = document.getElementById("nickname-introduction");
+			nicknameIntroductionEl.innerHTML = "经典游戏、全新玩法<br>等你来挑战！";
+			nicknameIntroductionEl.style.lineHeight = "1.6";
+		}
+	}
+	!function () {
+		var midLink = "http://tcsdzz.com/tip.html",
+	        apkLink = "http://tcsdzz.com/dl/app-official-release-latest.apk",
+	        dlIOSBtn = document.getElementById("dl-ios-btn"),
+	        dlAndroidBtn = document.getElementById("dl-android-btn"),
+	        code = getQueryParam("c"),
+			uid = getQueryParam("uid"),
+			nicknameApi = "http://snakeapi.afunapp.com/share/get_nickname";
+
+		if (isAndroid) {
+			dlIOSBtn.parentNode.appendChild(dlIOSBtn);
+		}
+
+
+	    function dlAn() {
+	      if (isWechat || isQQ || isWeibo) {
+	        window.location = midLink;
+	      } else {
+	        window.location = apkLink;
+	      }
+	    }
+
+	    function dliOS() {
+	      if (isWechat || isQQ) {
+	        window.location = yingyongbaoLink;
+	      } else if(isWeibo) {
+	        window.location = midLink;
+	      } else {
+	        window.location = "https://appsto.re/cn/RKGYcb.i";
+	      }
+	    }
+
+	    if (isSupportTouch) {
+	        dlIOSBtn.addEventListener("touchend", dliOS, false);
+	        dlAndroidBtn.addEventListener("touchend", dlAn, false);
+	    } else {
+	        dlIOSBtn.addEventListener("click", dliOS, false);
+	        dlAndroidBtn.addEventListener("click", dlAn, false);
+	    }
+
+		var p = gp(),
+		    h = hp(p);
+		if (h in document) {
+			if (document[h]) {
+				return;
+			}
+		}
+
+		if (window.top !== window.self) {
+			window.top.location = yingyongbaoLink;
+			return;
+		}
+
+		if (code) {
+			var script = document.createElement("script");
+			script.setAttribute("type", "text/javascript");
+			script.onerror = function () {fillNickname()};
+script.src = "http://tcsdzz.com/js/md8.min.js?v=6337c35f5b134841d380a90ef8473b77";
+			document.body.appendChild(script);
+	    } else if (uid) {
+			var script = document.createElement("script");
+			script.setAttribute("type", "text/javascript");
+			script.onerror = function () {fillNickname()};
+			script.src = nicknameApi + "/" + uid;
+			document.body.appendChild(script);
+	    } else {
+			fillNickname();
+		}
+	}();
+</script>
+<div style="display:none;">
+<script src="http://s4.cnzz.com/z_stat.php?id=1260568942&web_id=1260568942" language="JavaScript"></script>
+</div>
 </body>
 </html>
