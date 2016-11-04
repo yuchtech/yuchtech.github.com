@@ -16,7 +16,7 @@
             font-size: 20px;
             font-family: sans-serif;
             font-weight: 300;
-            background-color: #fafafa;
+            background-color: #3b3b3b;
         }
 
         @media (max-width: 350px) {
@@ -70,10 +70,10 @@
 
         .copy {
             margin-top: 1.9rem;
-            font-size: 1rem;
+            font-size: 2rem;
             font-weight: 400;
             text-align: center;
-            color: #566069;
+            color: #ffffff;
         }
 
         .dl-btn-container {
@@ -112,7 +112,7 @@
 
 		.footer a {
 			color: inherit;
-			color: #353535;
+			color: #ffffff;
 			text-decoration: none;
 			border-bottom: 1px solid;
 		}
@@ -120,129 +120,24 @@
     </style>
 </head>
 <body>
-<div class="container">
-<img src="./sparetime_icon.png" alt="图标" title="拼拼乐" class="icon"/>
-<p class="copy">拼拼乐</p>
-<p class="label">好玩，有趣！</p>
-<div class="dl-btn-container">
-<a href="javascript:" class="dl-btn dl-ios-btn" id="dl-ios-btn">
-<img src="./dl_ios_btn@2x.png" alt="iOS 下载">
-</a>
-<a href="javascript:" class="dl-btn dl-android-btn" id="dl-android-btn">
-<img src="./dl_android_btn@2x.png" alt="Android 下载">
-</a>
-</div>
-<div class="footer copyright">
-Copyright©<a href="https://yuchtech.github.io">金华市尤趣科技有限公司</a> All Rights Reserved
-</div>
-</div>
-<script>
-function gp() {
-	if ('hidden' in document) {
-		return null;
-	}
-	var browserPrefixes = ['moz', 'ms', 'o', 'webkit'];
-
-	for (var i = 0; i < browserPrefixes.length; i++) {
-		var prefix = browserPrefixes[i] + 'Hidden';
-		if (prefix in document) {
-	  		return browserPrefixes[i];
-		}
-	}
-	return null;
-}
-
-function hp(p) {
-	if (p) {
-		return p + 'Hidden';
-	} else {
-		return 'hidden';
-	}
-}
-</script>
-<script>
-	function fillNickname(nicknameVal) {
-		if (nicknameVal) {
-			var nicknameEl = document.getElementById("nickname");
-			nicknameEl.innerText = nicknameVal;
-		} else {
-			var nicknameIntroductionEl = document.getElementById("nickname-introduction");
-			nicknameIntroductionEl.innerHTML = "经典游戏、全新玩法<br>等你来挑战！";
-			nicknameIntroductionEl.style.lineHeight = "1.6";
-		}
-	}
-	!function () {
-		var midLink = "http://tcsdzz.com/tip.html",
-	        apkLink = "http://tcsdzz.com/dl/app-official-release-latest.apk",
-	        dlIOSBtn = document.getElementById("dl-ios-btn"),
-	        dlAndroidBtn = document.getElementById("dl-android-btn"),
-	        code = getQueryParam("c"),
-			uid = getQueryParam("uid"),
-			nicknameApi = "http://snakeapi.afunapp.com/share/get_nickname";
-
-		if (isAndroid) {
-			dlIOSBtn.parentNode.appendChild(dlIOSBtn);
-		}
-
-
-	    function dlAn() {
-	      if (isWechat || isQQ || isWeibo) {
-	        window.location = midLink;
-	      } else {
-	        window.location = apkLink;
-	      }
-	    }
-
-	    function dliOS() {
-	      if (isWechat || isQQ) {
-	        window.location = yingyongbaoLink;
-	      } else if(isWeibo) {
-	        window.location = midLink;
-	      } else {
-	        window.location = "https://appsto.re/cn/RKGYcb.i";
-	      }
-	    }
-
-	    if (isSupportTouch) {
-	        dlIOSBtn.addEventListener("touchend", dliOS, false);
-	        dlAndroidBtn.addEventListener("touchend", dlAn, false);
-	    } else {
-	        dlIOSBtn.addEventListener("click", dliOS, false);
-	        dlAndroidBtn.addEventListener("click", dlAn, false);
-	    }
-
-		var p = gp(),
-		    h = hp(p);
-		if (h in document) {
-			if (document[h]) {
-				return;
-			}
-		}
-
-		if (window.top !== window.self) {
-			window.top.location = yingyongbaoLink;
-			return;
-		}
-
-		if (code) {
-			var script = document.createElement("script");
-			script.setAttribute("type", "text/javascript");
-			script.onerror = function () {fillNickname()};
-script.src = "http://tcsdzz.com/js/md8.min.js?v=6337c35f5b134841d380a90ef8473b77";
-			document.body.appendChild(script);
-	    } else if (uid) {
-			var script = document.createElement("script");
-			script.setAttribute("type", "text/javascript");
-			script.onerror = function () {fillNickname()};
-			script.src = nicknameApi + "/" + uid;
-			document.body.appendChild(script);
-	    } else {
-			fillNickname();
-		}
-	}();
-</script>
-<div style="display:none;">
-<script src="http://s4.cnzz.com/z_stat.php?id=1260568942&web_id=1260568942" language="JavaScript"></script>
+	<div class="container">
+		<img src="./sparetime_icon.png" alt="图标" title="拼拼乐" class="icon"/>
+		<p class="copy">拼拼乐</p>
+		<p class="label">经典俄罗斯方块与三消的结合.</p>
+		<p class="label">可以自由地移动和拼凑不同的方块组合.</p>
+		<p class="label">动动你的大脑,消灭它们！</p>
+		<div class="dl-btn-container">
+			<a href="https://itunes.apple.com/cn/app/sparetime-play/id1156056913" class="dl-btn dl-ios-btn" id="dl-ios-btn">
+				<img src="./dl_ios_btn@2x.png" alt="iOS 下载">
+			</a>
+			<a href="http://s.t.tt/LB8x3j?&source=share&version=2" class="dl-btn dl-android-btn" id="dl-android-btn">
+				<img src="./dl_android_btn@2x.png" alt="Android 下载">
+			</a>
+		</div>
+		<div class="footer copyright">
+			Copyright© <a href="https://yuchtech.github.io">金华市尤趣科技有限公司</a> All Rights Reserved
+	</div>
+	</div>
 </div>
 </body>
 </html>
