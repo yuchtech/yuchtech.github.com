@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "gonia.data.unityweb",
+"asmCodeUrl": "gonia.asm.code.unityweb",
+"asmMemoryUrl": "gonia.asm.memory.unityweb",
+"asmFrameworkUrl": "gonia.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000"
+}
